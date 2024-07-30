@@ -1,0 +1,190 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+enum CustomFieldType {
+  TEXT
+  BOOLEAN
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id String  @unique
+  name String
+  email String @unique
+  masterPassword String
+
+  passwords Password[]
+  cards Card[]
+  notes Note[]
+  categories Category[]
+  identities Identity[]
+
+  settings Settings? 
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@index([email])
+}
+
+
+model Password {
+  id String @unique @default(uuid())
+  label String
+  website String? 
+  userName String
+  password String
+  note String?
+  userEmail String
+  user User @relation(fields: [userEmail],references: [email],onDelete:Cascade)
+
+  totpKey String?
+
+  categoryId String? 
+  category Category? @relation(fields: [categoryId],references: [id],onDelete: SetNull)
+
+  customFields CustomField[]
+
+  requireMasterPassword Boolean @default(true)
+  
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@index([categoryId,userEmail])
+}
+
+model CustomField {
+  id String @unique @default(uuid())
+  
+
+  label String
+  value String
+
+  PasswordId String
+  Password Password @relation(fields: [PasswordId],references: [id])
+
+  cardId String
+  card Card @relation(fields: [cardId],references: [id])
+  
+  identityId String
+  identity Identity @relation(fields: [identityId],references: [id])
+  
+  noteId String
+  note Note @relation(fields: [noteId],references: [id])
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id String @unique @default(uuid())
+  label String
+
+  userEmail String
+  user User @relation(fields: [userEmail],references: [id])
+
+  Passwords Password[]
+  cards Card[]
+  notes Note[]
+  identities Identity[]
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Identity {
+  id String @unique @default(uuid())
+  label String
+
+  categoryId String? 
+  category Category? @relation(fields: [categoryId],references: [id],onDelete: SetNull)
+  
+  userEmail String? 
+  user User? @relation(fields: [userEmail],references: [email],onDelete: SetNull)
+
+  customFields CustomField[]
+  requireMasterPassword Boolean @default(true)
+
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Card {
+  id String @unique @default(uuid())
+  label String
+
+  categoryId String? 
+  category Category? @relation(fields: [categoryId],references: [id],onDelete: SetNull)
+  
+  userEmail String 
+  user User @relation(fields: [userEmail],references: [email])
+
+  customFields CustomField[]
+
+  holderName String
+  brand String
+  cardNumber String
+  expirationMonth String
+  expirationYear String
+  cvv String
+  note String?
+
+  requireMasterPassword Boolean @default(true)
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+    @@index([label,categoryId])
+}
+
+model Note {
+  id String @unique @default(uuid())
+
+  label String
+  note String
+
+  
+  categoryId String? 
+  category Category? @relation(fields: [categoryId],references: [id],onDelete: SetNull)  
+
+  userEmail String
+  user User @relation(fields: [userEmail],references: [email])
+
+  customFields CustomField[]
+
+  requireMasterPassword Boolean @default(true)
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@index([label,categoryId])
+}
+
+
+model Settings {
+  id String @default(uuid()) @unique
+
+  applyMasterPasswordOnAll Boolean
+  showWebsiteIcon Boolean
+  vaultTimeOut Int // IN Minutes
+
+  userEmail String @unique
+  user User @relation(fields: [userEmail],references: [email])
+
+  upDatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
