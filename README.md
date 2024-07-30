@@ -20,12 +20,12 @@ To get started with SAFE, follow these steps:
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/diligentdexterity/SAFE.git
+    git clone https://github.com/diligentdexterity/safe.git
     ```
 
 2. **Navigate to the project directory:**
     ```sh
-    cd SAFE
+    cd safe
     ```
 
 3. **Install dependencies:**
@@ -36,11 +36,13 @@ To get started with SAFE, follow these steps:
 4. **Set up environment variables:**
     - Create a `.env` file in the root directory and add the following variables:
         ```
-        DATABASE_URL=your_postgresql_database_url
-        NEXTAUTH_URL=your_nextauth_url
-        NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_client_id
-        NEXT_PUBLIC_GOOGLE_CLIENT_SECRET=your_google_client_secret
-        MASTER_PASSWORD=your_master_password
+        AUTH_SECRET=
+        DATABASE_URL=
+        AUTH_GOOGLE_ID=
+        AUTH_GOOGLE_SECRET=
+        NEXT_PUBLIC_API=
+        NEXT_PUBLIC_SECRET_IV= *optional*
+        NEXT_PUBLIC_ECNRYPTION_METHOD=
         ```
 
 5. **Run the development server:**
