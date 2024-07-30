@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import db from "@/lib/db";
 import bcrypt from "bcrypt";
 import { Session } from "next-auth";
+import { v4 as uuid } from "uuid";
 
 export default async function createUser(masterPassword: string, session: Session) {
   try {
@@ -24,7 +25,7 @@ export default async function createUser(masterPassword: string, session: Sessio
 
     const newUser = await db.user.create({
       data: {
-        id: session.user.id,
+        id: uuid(),
         email: session.user.email,
         masterPassword: hashedPassword,
         name: session.user.name,

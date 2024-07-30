@@ -1,15 +1,19 @@
-import { signIn, signOut } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import React from "react";
 import Logo from "../../_components/logo";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
-const Auth = () => {
+const Auth = async () => {
+  const session = await auth();
+
+  if (session) redirect("/passwords");
   return (
     <div className="min-h-[calc(100vh-450px)] flex items-center justify-center">
       <div className="space-y-10">
-        <div className="flex gap-x-3 text-5xl font-extrabold items-end flex-wrap">
+        <div className="flex md:flex-row flex-col items-center gap-x-3 text-5xl font-extrabold text-center md:items-end flex-wrap">
           <h1>Get Started With</h1>
           <Logo /> <h1>Today</h1>
         </div>

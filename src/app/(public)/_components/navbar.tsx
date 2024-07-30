@@ -3,12 +3,12 @@ import { navbarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { FC } from "react";
 
-const Navbar = () => {
+const Navbar: FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
   const pathname = usePathname();
   return (
-    <div className="flex gap-x-10">
+    <div className={cn("flex gap-x-10", props.className)} {...props}>
       {navbarLinks.map((link, i) => {
         // const Icon = link.icon;
         const isActive = pathname === link.link;

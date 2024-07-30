@@ -1,11 +1,9 @@
 "use client";
-import createUser from "@/actions/createUser";
 import validateMasterpassword from "@/actions/validateMasterpassword";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
-import { removeRequestMeta } from "next/dist/server/request-meta";
 import Image from "next/image";
 import React, { FC, useEffect, useState } from "react";
 import { toast } from "sonner";

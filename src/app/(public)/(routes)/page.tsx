@@ -20,9 +20,9 @@ const HomePage = async () => {
   }
   return (
     <div>
-      <div className={cn("flex max-w-5xl justify-between mx-auto items-center", landingScreenHeight)}>
-        <div className="flex-1 space-y-10">
-          <div className="text-[60px] leading-snug mona-sans font-extrabold">
+      <div className={cn("flex flex-wrap flex-col gap-y-20 lg:flex-row max-w-5xl justify-between mx-auto items-center", landingScreenHeight)}>
+        <div className="flex-1 space-y-10 items-center flex flex-col md:mt-0 mt-10">
+          <div className="text-[60px] text-center md:text-left leading-snug mona-sans font-extrabold">
             <p>Never</p>
             <p> Forgot</p> <span className="text-primary">Password</span> <p>Anymore</p>
           </div>
@@ -31,13 +31,13 @@ const HomePage = async () => {
             <MoveRight size={20} />
           </Link>
         </div>
-        <div className="flex-1 items-center justify-center flex">
-          <Image src="/images/mobile.svg" alt="mobile" width={372} height={746} />
+        <div className="">
+          <Image src="/images/mobile.svg" alt="mobile" width={372} height={746} className="" />
         </div>
       </div>
       <div className="space-y-10">
-        <div className="justify-center text-6xl mona-sans font-extrabold flex items-end gap-x-3">
-          How does <Logo height="h-full" /> works?
+        <div className="justify-center text-6xl mona-sans font-extrabold text-center flex md:flex-row flex-col items-center md:items-end gap-x-3">
+          How does <Logo className="md:h-full md:mt-0 md-1 h-[50px]" /> works?
         </div>
         <HowItWorks />
       </div>
@@ -47,7 +47,7 @@ const HomePage = async () => {
           Feels great in <span className="text-primary font-extrabold">low-light</span>
         </h1>
 
-        <div className="flex justify-center items-center gap-x-10">
+        <div className="flex flex-wrap justify-center items-center gap-x-10">
           <div className="bg-gray-900 max-w-[500px] space-y-3 px-11 py-8 rounded-xl">
             <h3 className="text-4xl mona-sans">
               Dark Mode <span className="text-primary">On</span>
@@ -66,11 +66,11 @@ const HomePage = async () => {
         </div>
       </div>
 
-      <WobbleCard className="flex flex-col gap-3 items-center justify-center" containerClassName="my-10">
-        <div className="text-5xl mona-sans font-bold items-center flex gap-x-4 capitalize">
+      <WobbleCard className="flex flex-col gap-3 items-center justify-center md:py-20 py-10" containerClassName="my-5 md:my-10">
+        <div className="text-5xl mona-sans font-bold items-center md:flex-row flex-col justify-center text-center flex gap-x-4 capitalize">
           <h1>Get started with</h1> <Logo height="h-[full]" /> <h1>today</h1>
         </div>
-        <div className="flex gap-x-5 items-center">
+        <div className="flex flex-wrap justify-center gap-y-3 gap-x-5 items-center">
           <Link href="/auth" className={buttonVariants({ variant: "secondary", className: "gap-x-2 bg-black h-full cursor-pointer z-10" })}>
             <Globe size={20} /> Continue On Web
           </Link>

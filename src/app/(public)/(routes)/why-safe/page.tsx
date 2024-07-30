@@ -3,7 +3,7 @@ import React from "react";
 import Logo from "../../_components/logo";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { GlareCard } from "@/components/ui/glare-card";
 import { Lock } from "lucide-react";
 import Link from "next/link";
@@ -14,7 +14,7 @@ const WhySafePage = () => {
 
   return (
     <div>
-      <div className={cn("flex items-center gap-x-20 border-b", landingScreenHeight)}>
+      <div className={cn("flex flex-col md:my-0 my-20 items-center gap-x-20 border-b", landingScreenHeight)}>
         <div className="flex-1 space-y-5">
           <div className="flex items-center text-2xl font-semibold">
             Why <Logo height="h-[25px]" className="-mx-6" /> ?
@@ -34,8 +34,8 @@ const WhySafePage = () => {
       <div className="my-20 text-center space-y-5">
         <div className="text-5xl font-extrabold">
           Discover the Power of Secure <br />
-          <span className="flex items-center justify-center">
-            Password Management with <Logo />
+          <span className="flex md:flex-row flex-col items-center justify-center">
+            Password Management with <Logo height="mx-5 md:mx-0 h-[100px]" />
           </span>
         </div>
         <p className="text-lg text-muted-foreground">
@@ -43,8 +43,8 @@ const WhySafePage = () => {
           <br /> others aren’t—providing complete credential and password management. We promise to:
         </p>
       </div>
-      <div className="grid grid-cols-2 h-fit gap-x-10 gap-y-20">
-        <GlareCard className="px-20 py-10 w-full space-y-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-fit gap-x-10 gap-y-20">
+        <GlareCard className="md:px-20 md:py-10 px-10 py-5 w-full space-y-5">
           <Lock size={25} />
           <h2 className="text-white font-bold text-2xl mt-4">Top-Notch Security</h2>
           <p>
@@ -52,7 +52,7 @@ const WhySafePage = () => {
             cannot access it. This robust security guarantees protection against unauthorized access.
           </p>
         </GlareCard>
-        <GlareCard className="px-20 py-10 w-full space-y-5">
+        <GlareCard className="md:px-20 md:py-10 px-10 py-5 w-full space-y-5">
           <FaComputer size={25} />
           <h2 className="text-white font-bold text-2xl mt-4">Cross-Platform Availability</h2>
           <p>
@@ -60,7 +60,7 @@ const WhySafePage = () => {
             secure and synchronized across all your platforms with SAFE.
           </p>
         </GlareCard>
-        <GlareCard className="px-20 py-10 w-full space-y-5">
+        <GlareCard className="md:px-20 md:py-10 px-10 py-5 w-full space-y-5">
           <FaDollarSign size={25} />
           <h2 className="text-white font-bold text-2xl mt-4">Completely Free</h2>
           <p>
@@ -68,7 +68,7 @@ const WhySafePage = () => {
             security tools, and SAFE provides just that.
           </p>
         </GlareCard>
-        <GlareCard className="px-20 py-10 w-full space-y-5">
+        <GlareCard className="md:px-20 md:py-10 px-10 py-5 w-full space-y-5">
           <FaUser size={25} />
           <h2 className="text-white font-bold text-2xl mt-4">Individually Crafted</h2>
           <p>

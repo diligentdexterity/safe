@@ -1,14 +1,9 @@
-import { auth } from "@/auth";
-import { redirect } from "next/navigation";
+"use client";
 import React, { FC } from "react";
 import Header from "./_components/header";
 import Footer from "./_components/footer";
 
 const PublicLayout: FC<{ children: React.ReactNode }> = async ({ children }) => {
-  const session = await auth();
-
-  if (session) redirect("/passwords");
-
   return (
     <>
       <div>

@@ -1,10 +1,11 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { DashboardSidebar } from "../../../components/modules/sidebar";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "../../../components/ui/resizable";
 
 import { cn } from "@/lib/utils";
 import { Session } from "next-auth";
+import { useRouter } from "next/navigation";
 
 const ModulesLayoutClient: FC<{
   children: React.ReactNode;
@@ -14,6 +15,13 @@ const ModulesLayoutClient: FC<{
 }> = ({ children, session, defaultLayout = [265, 1095], defaultCollapsed = false }) => {
   const navCollapsedSize = 4;
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (window.innerWidth <= 761) {
+      router.push("/downloads");
+    }
+  }, []);
 
   return (
     <div className="background">

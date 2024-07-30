@@ -1,8 +1,8 @@
+"use client";
 import { navbarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
 import React, { FC } from "react";
 import Logo from "./logo";
-import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaGooglePlay, FaAppStoreIos } from "react-icons/fa6";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ const FooterLink: FC<{ link: string; label: string }> = ({ link, label }) => {
 const Footer: FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
   return (
     <div className={cn("asbolute bottom-0 left-0 w-screen bg-gray-900 rounded-t-lg py-10", props.className)}>
-      <div className="flex items-start justify-between container gap-x-10">
+      <div className="flex flex-col lg:flex-row items-start justify-center gap-y-10 md:justify-between container gap-x-10">
         <div className="flex-1 space-y-5">
           <Logo />
           <p className="text-lg">SAFE is a free and secure way to store your secrets </p>
@@ -26,7 +26,7 @@ const Footer: FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
             <FaAppStoreIos size={22} className="cursor-pointer hover:scale-110" />
           </div>
         </div>
-        <div className="flex-1 flex gap-x-20 bg-muted px-20 py-10 w-full rounded-3xl">
+        <div className="flex-1 flex md:flex-row flex-col text-center gap-x-20 gap-y-5 bg-muted px-20 py-10 w-full rounded-3xl">
           <div>
             <h6 className="text-xl font-bold mb-3">Routes</h6>
             {navbarLinks.map((link, i) => (
@@ -54,7 +54,7 @@ const Footer: FC<React.HTMLAttributes<HTMLDivElement>> = (props) => {
         </div>
         <div className="flex-1">
           <iframe
-            className="rounded-xl"
+            className="rounded-xl w-full mx-auto"
             width="560"
             height="250"
             src="https://www.youtube.com/embed/dgkp7KtnuQg?si=g2hqljGdv2yq8v7l&amp;controls=0"

@@ -20,7 +20,7 @@ export function HowItWorks() {
           width={500}
           height={500}
           alt="linear demo image"
-          className="absolute -right-4 lg:-right-[20%] filter -bottom-10 object-contain rounded-2xl"
+          className="absolute -right-0 lg:-right-[20%] filter -bottom-10 object-contain rounded-2xl"
         />
       </WobbleCard>
       <WobbleCard containerClassName="col-span-1 min-h-[300px]">
@@ -46,7 +46,7 @@ export function HowItWorks() {
           width={500}
           height={500}
           alt="linear demo image"
-          className="absolute -right-4 lg:-right-[20%] filter -bottom-5 object-contain rounded-2xl"
+          className="absolute -right-0 lg:-right-[20%] filter -bottom-3 object-contain rounded-2xl"
         />
       </WobbleCard>
       <WobbleCard containerClassName="col-span-1 bg-yellow-700 min-h-[300px]">
